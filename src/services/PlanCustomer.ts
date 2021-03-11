@@ -29,4 +29,18 @@ export class PlanCustomerService {
       throw e
     }
   }
+
+  async getPlanCustomerByUserId(userId: number): Promise<any> {
+    try {
+      //this.authenticateUserType.authenticateUserType(req, [Types.USER_ADMIN, Types.USER_ADMIN_ROOT], this.connection)
+      const planCustomer = await this.connection.query('CALL PLANSCUSTOMERS_GetPlansCustomersByIdUser(?)', [userId])
+      if (planCustomer[0].length === 0) return []
+      return planCustomer[0]
+    }
+    catch (e) {
+      throw e
+    }
+  }
 }
+
+
