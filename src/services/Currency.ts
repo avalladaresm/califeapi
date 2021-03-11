@@ -31,7 +31,7 @@ export class CurrencyService {
     }
   }
 
-  async getCurrencyById(@Req() req: any, id: number): Promise<any> {
+  async getCurrency(@Req() req: any, id: number): Promise<any> {
     try {
       this.authenticateUserType.authenticateUserType(req, [Types.USER_ADMIN, Types.USER_ADMIN_ROOT], this.connection)
       const currency = await this.connection.query('CALL getCurrencyById(?)', [id])

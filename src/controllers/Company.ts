@@ -1,5 +1,5 @@
 import { BodyParams, Controller, Delete, Get, PathParams, Post, Put, Req, UseBefore } from '@tsed/common';
-import { ContentType } from '@tsed/schema';
+import { ContentType, Deprecated, Summary } from '@tsed/schema';
 import { Authenticate } from '../middlewares/Authenticate';
 import { CompanyService } from '../services/Company';
 
@@ -32,6 +32,8 @@ export class CompanyController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Post('/createCompany')
   @ContentType('application/json')
   async createCompany(@Req() req: any, @BodyParams() data: any): Promise<any> {
@@ -44,6 +46,8 @@ export class CompanyController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Put('/updateCompany/:id')
   @ContentType('application/json')
   async updateCompany(@Req() req: any, @PathParams() id: number, @BodyParams() data: any): Promise<any> {
@@ -56,6 +60,8 @@ export class CompanyController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Delete('/deleteCompany/:id')
   @ContentType('application/json')
   async deleteCompany(@Req() req: any, @PathParams() id: number): Promise<any> {

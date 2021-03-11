@@ -1,5 +1,5 @@
-import { BodyParams, Controller, Delete, Get, PathParams, Post, Put, Req, UseBefore } from '@tsed/common';
-import { ContentType } from '@tsed/schema';
+import { BodyParams, Controller, Get, PathParams, Post, Put, Req, UseBefore } from '@tsed/common';
+import { ContentType, Deprecated,  Summary } from '@tsed/schema';
 import { Authenticate } from '../middlewares/Authenticate';
 import { PlanService } from '../services/Plan';
 
@@ -32,6 +32,8 @@ export class PlanController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Post('/createPlan')
   @ContentType('application/json')
   async createPlan(@Req() req: any, @BodyParams() data: any): Promise<any> {
@@ -44,6 +46,8 @@ export class PlanController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Put('/updatePlan/:id')
   @ContentType('application/json')
   async updatePlan(@Req() req: any, @PathParams() id: number, @BodyParams() data: any): Promise<any> {

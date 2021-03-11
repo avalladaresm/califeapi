@@ -1,5 +1,5 @@
 import { BodyParams, Controller, Delete, Get, PathParams, Post, Put, Req, UseBefore } from '@tsed/common';
-import { ContentType } from '@tsed/schema';
+import { ContentType, Deprecated, Summary } from '@tsed/schema';
 import { Authenticate } from '../middlewares/Authenticate';
 import { UserService } from '../services/User';
 
@@ -8,6 +8,8 @@ import { UserService } from '../services/User';
 export class UserController {
   constructor(private userService: UserService) { }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Get('/getAllUsers')
   @ContentType('application/json')
   async getAllUsers(@Req() req: any): Promise<any> {
@@ -22,7 +24,7 @@ export class UserController {
 
   @Get('/:id')
   @ContentType('application/json')
-  async getUserById(@PathParams ('id') id: number): Promise<any> {
+  async getUserById(@PathParams('id') id: number): Promise<any> {
     try {
       const user = await this.userService.getUserById(id)
       return user
@@ -32,6 +34,8 @@ export class UserController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Post('/createUser')
   @ContentType('application/json')
   async createUser(@Req() req: any, @BodyParams() data: any): Promise<any> {
@@ -44,6 +48,8 @@ export class UserController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Put('/updateUser/:id')
   @ContentType('application/json')
   async updateUser(@Req() req: any, @PathParams() id: number, @BodyParams() data: any): Promise<any> {
@@ -56,6 +62,8 @@ export class UserController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Delete('/deleteUser/:id')
   @ContentType('application/json')
   async deleteUser(@Req() req: any, @PathParams() id: number): Promise<any> {

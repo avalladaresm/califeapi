@@ -1,5 +1,5 @@
 import { BodyParams, Controller, Delete, Get, PathParams, Post, Put, Req, UseBefore } from '@tsed/common';
-import { ContentType } from '@tsed/schema';
+import { ContentType, Deprecated, Summary } from '@tsed/schema';
 import { Authenticate } from '../middlewares/Authenticate';
 import { CountryService } from '../services/Country';
 
@@ -8,6 +8,8 @@ import { CountryService } from '../services/Country';
 export class CountryController {
   constructor(private companyService: CountryService) { }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Get('/getAllCountries')
   @ContentType('application/json')
   async getAllCountries(@Req() req: any): Promise<any> {
@@ -20,6 +22,8 @@ export class CountryController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Get('/getCountry/:id')
   @ContentType('application/json')
   async getCountryById(@Req() req: any, id: number): Promise<any> {
@@ -32,6 +36,8 @@ export class CountryController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Post('/createCountry')
   @ContentType('application/json')
   async createCountry(@Req() req: any, @BodyParams() data: any): Promise<any> {
@@ -44,6 +50,8 @@ export class CountryController {
     }
   }
 
+  @Deprecated()
+  @Summary('Not being used yet.')
   @Put('/updateCountry/:id')
   @ContentType('application/json')
   async updateCountry(@Req() req: any, @PathParams() id: number, @BodyParams() data: any): Promise<any> {
