@@ -20,11 +20,11 @@ export class PlanController {
     }
   }
 
-  @Get('/getPlanById/:id')
+  @Get('/:id')
   @ContentType('application/json')
-  async getPlanById(@Req() req: any, id: number): Promise<any> {
+  async getPlanById(@PathParams('id') id: number): Promise<any> {
     try {
-      const plan = await this.companyService.getPlanById(req, id)
+      const plan = await this.companyService.getPlanById(id)
       return plan
     }
     catch (e) {

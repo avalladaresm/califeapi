@@ -31,9 +31,9 @@ export class PlanService {
     }
   }
 
-  async getPlanById(@Req() req: any, id: number): Promise<any> {
+  async getPlanById(id: number): Promise<any> {
     try {
-      this.authenticateUserType.authenticateUserType(req, [Types.USER_ADMIN, Types.USER_ADMIN_ROOT], this.connection)
+      //this.authenticateUserType.authenticateUserType(req, [Types.USER_ADMIN, Types.USER_ADMIN_ROOT], this.connection)
       const plan = await this.connection.query('CALL getPlanById(?)', [id])
       return plan[0][0]
     }
