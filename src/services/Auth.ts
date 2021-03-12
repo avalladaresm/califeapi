@@ -69,7 +69,7 @@ export class AuthService {
         data.name,
         data.email,
         data.phone,
-        new Date(data.birthDate),
+        data.birthDate,
         data.country,
         data.password,
       ])
