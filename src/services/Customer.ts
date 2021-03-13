@@ -45,7 +45,7 @@ export class CustomerService {
   async createCustomer(data: any): Promise<any> {
     try {
       //this.authenticateUserType.authenticateUserType(req, [Types.USER_ADMIN, Types.USER_ADMIN_ROOT], this.connection)
-      const customer = await this.connection.query('CALL CUSTOMER_CreateCustomer(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
+      const customer = await this.connection.query('CALL CUSTOMER_CreateCustomer(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
         data.data.uid,
         data.data.firstname,
         data.data.middlename,
@@ -67,13 +67,14 @@ export class CustomerService {
         data.data.block,
         data.data.houseNumber,
         data.data.addressType,
-        data.data.cityId,
-        data.data.stateId,
-        data.data.countryId,
+        data.data.city,
+        data.data.state,
+        data.data.country,
         data.data.identificationDocument,
         data.data.identificationDocumentType,
-        data.data.phoneNumber,
-        data.data.phoneNumberType,
+        data.data.cellphoneNumber,
+        data.data.telephoneNumber,
+        data.data.faxNumber
       ])
       console.log('customer', customer)
       return customer
