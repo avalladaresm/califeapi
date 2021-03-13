@@ -76,7 +76,10 @@ export class CustomerService {
         data.data.telephoneNumber,
         data.data.faxNumber
       ])
-      console.log('customer', customer)
+
+      data.data.beneficiaries?.forEach(async (b: any) => {
+        await this.connection.query('CALL CUSTOMER_CreateCustomerBeneficiary(?,?,?,?,?)', [customer[0][0].id, b.beneficiaryFullname, b.beneficiaryKin, b.beneficiaryIdentificationDocument, b.beneficiaryPercentage])
+      });
       return customer
     }
     catch (e) {
