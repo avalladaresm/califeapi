@@ -80,41 +80,46 @@ export class CustomerService {
       data.data.beneficiaries?.forEach(async (b: any) => {
         await this.connection.query('CALL CUSTOMER_CreateCustomerBeneficiary(?,?,?,?,?)', [customer[0][0].id, b.beneficiaryFullname, b.beneficiaryKin, b.beneficiaryIdentificationDocument, b.beneficiaryPercentage])
       });
+
+      data.data.dependants?.forEach(async (d: any) => {
+        await this.connection.query('CALL DEPENDANT_CreateDependant(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
+          customer[0][0].id,
+          d.dependantFirstname,
+          d.dependantMiddlename,
+          d.dependantFirstSurname,
+          d.dependantSecondSurname,
+          d.dependantSurnameAfterMarried,
+          d.dependantEmail,
+          d.dependantGender,
+          new Date(d.dependantBirthDate),
+          d.dependantMaritalStatus,
+          d.dependantOccupation,
+          d.dependantWeight,
+          d.dependantHeight,
+          d.dependantWorksAt,
+          d.dependantWorkAddress,
+          d.dependantNeighborhood,
+          d.dependantAvenue,
+          d.dependantStreet,
+          d.dependantBlock,
+          d.dependantHouseNumber,
+          d.dependantAddressType,
+          d.dependantCity,
+          d.dependantState,
+          d.dependantCountry,
+          d.dependantIdentificationDocument,
+          d.dependantIdentificationDocumentType,
+          d.dependantCellphoneNumber,
+          d.dependantTelephoneNumber,
+          d.dependantFaxNumber
+        ])
+      });
       return customer
     }
     catch (e) {
       throw e
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   async updateCustomer(@Req() req: any, id: number, data: any): Promise<any> {
     try {
