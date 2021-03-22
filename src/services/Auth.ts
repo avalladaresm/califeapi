@@ -6,7 +6,7 @@ import { Connection } from 'typeorm';
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
-interface LoggedInUser {
+interface LoggedInUserCookieData {
   a_t: string
   r: string
   uid: number
@@ -39,7 +39,7 @@ export class AuthService {
         expiresIn: process.env.JWT_EXPIRESIN,
       });
 
-      const loginRes: LoggedInUser = { a_t: token, r: profileRes.name, uid: userRes.idUser }
+      const loginRes: LoggedInUserCookieData = { a_t: token, r: profileRes.name, uid: userRes.idUser }
 
       return loginRes
     }
