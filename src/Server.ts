@@ -36,7 +36,7 @@ const spec: Partial<OpenSpec3> = {
   httpPort: process.env.PORT || 4000,
   httpsPort: process.env.PORT,
   mount: {
-    '/':
+    '/_api':
       `${rootDir}/controllers/**/*.ts`
   },
   componentsScan: [
@@ -44,7 +44,7 @@ const spec: Partial<OpenSpec3> = {
   ],
   swagger: [
     {
-      path: "/",
+      path: "/_api",
       specVersion: '3.0.3',
       spec: spec
     }
